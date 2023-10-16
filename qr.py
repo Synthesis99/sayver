@@ -1,4 +1,3 @@
-
 import cv2
 import numpy as np
 from PIL import Image
@@ -18,24 +17,9 @@ args = parser.parse_args()
 screenshot_path = args.screenshot_path
 mint_address = args.mint
 
-s = pyshorteners.Shortener()
-
-
-# Construct the mint link
-mint_link = (f"https://xray.helius.xyz/token/{mint_address}?network=devnet") 
-
-response = requests.get(f"https://is.gd/create.php?format=simple&url={mint_link}")
-
-if response.status_code == 200:
-    shortened_url = response.text.strip()
-    print("Shortened URL:", shortened_url)
-else:
-    print("Failed to shorten URL. Status code:", response.status_code)
-
-print("Mint Link:", shortened_url)
 
 # Create and save QR code
-qrcode = segno.make_qr(shortened_url, error='Q')
+qrcode = segno.make_qr(mint_address, error='H')
     
 # Save the QR code image
 qrcode.save(f"qr_{screenshot_path}", scale=3, border=1, light="yellow")
@@ -45,7 +29,7 @@ bg_image = Image.open(screenshot_path)
 overlay_image = Image.open(f"qr_{screenshot_path}")
 
 # Resize overlay image to your desired size
-qrcode_size = 50
+qrcode_size = 60
 overlay_image = overlay_image.resize((qrcode_size, qrcode_size))
 
 # Calculate overlay image size
