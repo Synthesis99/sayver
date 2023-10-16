@@ -67,7 +67,7 @@ def capture_tweet_screenshot(tweet_url, screenshot_path):
         # Wait for the tweet element using an explicit wait
         wait = WebDriverWait(browser, 90)  # wait for up to 60 seconds
         tweet = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
-        time.sleep(5)
+        time.sleep(10)
 
         # Capture screenshot of the element
         tweet.screenshot(screenshot_path)
