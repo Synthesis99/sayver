@@ -13,7 +13,7 @@ from check_driver import check_driver
 
 check_driver()
 
-# from shadow_drive import ShadowDriveClient
+from shadow_drive import ShadowDriveClient
 from solders.keypair import Keypair
 from urllib.parse import quote
 import argparse
